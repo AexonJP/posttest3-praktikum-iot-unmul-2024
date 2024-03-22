@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="okeh"></h1>
+    <h1 id="bruh"></h1>
+    <h1 id="bruh1"></h1>
+    <script>
+        fetch('https://backend.thinger.io/v3/users/aexon/devices/aexons/resources/dht11', {
+        headers: {Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTExMDMyOTEsImlhdCI6MTcxMTA5NjA5MSwicm9sZSI6InVzZXIiLCJ1c3IiOiJhZXhvbiJ9.ArDbZ6bQJFkRbJzYZOFzf_jDXTgS6ZqbwuUI4AO0VAU'}
+        })
+        .then(resp => resp.json())
+        .then(json => {
+            document.getElementById("okeh").innerHTML = "suhu dari dht = "+parseFloat(json["suhu"])+" derajat C";
+            document.getElementById("bruh").innerHTML = "suhu dari dht = "+parseFloat(json["suhu"]+ 273.15)+" derajat K";
+            document.getElementById("bruh1").innerHTML = "suhu dari dht = "+parseFloat((json["suhu"]* 1.8) + 32)+" derajat F";
+            // parseInt
+            // (Celsius * 1.8) + 32
+        })
+
+        
+    </script>
+</body>
+</html>
